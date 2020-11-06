@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Simple Recorder.js demo with record, stop and pause - addpipe.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Latest compiled and minified Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="../static/css/style.css">
+  </head>
+  <body>
+    
+    <div id="controls">
+  	 <button id="recordButton" class="recorder-container"> 
+        <div class="outer none" none></div>
+        <div class="outer-2 none" ></div>
+        <div class="icon-microphone"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"  class="mic-icon" viewBox="0 0 24 24"><path  d="M16 11c0 2.209-1.791 4-4 4s-4-1.791-4-4v-7c0-2.209 1.791-4 4-4s4 1.791 4 4v7zm4-2v2c0 4.418-3.582 8-8 8s-8-3.582-8-8v-2h2v2c0 3.309 2.691 6 6 6s6-2.691 6-6v-2h2zm-7 13v-2h-2v2h-4v2h10v-2h-4z"/></svg></div>
+    </button>
+    <span class="state">Click On Record Button To recognize </span>
+    <!-- <button id="stopButton" disabled>Stop</button> -->
+    </div>
+    <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <!-- <script src="../static/js/app.js"</script> -->
+  </body>
+</html>
