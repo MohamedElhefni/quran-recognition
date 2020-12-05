@@ -1,9 +1,9 @@
 {
     "database": {
         "host": "127.0.0.1",
-        "user": "user",
-        "password": "pass",
-        "database": "dbname"
+        "user": "mohamed",
+        "password": "mohamed**//",
+        "database": "quran"
     },
     "database_type": "mysql"
 }
