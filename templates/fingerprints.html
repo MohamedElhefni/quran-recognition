@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Simple Recorder.js demo with record, stop and pause - addpipe.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Latest compiled and minified Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+  </head>
+  <body>
+
+    <form action="/fingerprints" method="POST" enctype="multipart/form-data">
+        <label for="audio">Select a file:</label>
+        <input type="file" id="audio" name="audio" multiple accept=".mp3,.wav">
+        <input type="submit" value="Generate">
+    </form>
+    
+    {% for fingerprint in fingerprints %}
+ 
+    <h1> {{ fingerprint.song_name }} </h1>
+    <p> {{ fingerprint.total_hashes }} </p>
+    <p> {{ fingerprint.date_created }} </p>
+
+    {% endfor %}
+ 
+    <!-- <script src="../static/js/app.js"</script> -->
+  </body>
+</html>

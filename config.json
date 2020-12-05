@@ -1,13 +1,9 @@
 {
-  "env": "default",
-
-  "db.dsn": null,
-  "db.database": null,
-  "db.file": "db/fingerprints2.db",
-
-  "channels": "2",
-  "mic.visualise_console": true,
-  "mic.visualise_plot": false,
-
-  "fingerprint.show_plots": false
+    "database": {
+        "host": "127.0.0.1",
+        "user": "user",
+        "password": "pass",
+        "database": "dbname"
+    },
+    "database_type": "mysql"
 }

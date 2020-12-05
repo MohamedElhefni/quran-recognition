@@ -110,7 +110,8 @@ function createDownloadLink(blob) {
   })
     .then((response) => response.json())
     .then((data) => {
-      state.textContent = data.SONG_NAME;
+      let songName = data.results[0]
+      state.textContent = songName.song_name;
       recordButton.disabled = false;
       recordButton.classList.remove("disabled");
     })
