@@ -3,7 +3,7 @@
         "host": "127.0.0.1",
         "user": "mohamed",
         "password": "mohamed**//",
-        "database": "quran"
+        "database": "dejavu"
     },
     "database_type": "mysql"
 }

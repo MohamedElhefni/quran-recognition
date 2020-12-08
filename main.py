@@ -9,6 +9,7 @@ from utility import getSongName, init
 
 # from recognize import getSong
 app = Flask(__name__)
+app.config['MYSQL_DATABASE_CHARSET'] = 'utf8mb4'
 djv = init('config.json')
 
 
