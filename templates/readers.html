@@ -1,0 +1,10 @@
+{% extends "main.html" %}
+{% block content %}
+	<h1 class="text-8xl text-gray-800 font-black my-5">الشيوخ</h1>
+
+	<div class="readers flex flex-wrap justify-center items-center">
+		{% for reader in readers %}
+				<a class="reader font-black font-sans text-gray-700  text-xl rounded-lg shadow-md bg-gray-100 m-3 hover:bg-gray-200 p-3" href="{{ url_for('show', id=reader.identifier) }}"> {{  reader.name }} </a>
+		{% endfor %}		
+	</div>
+{% endblock %}

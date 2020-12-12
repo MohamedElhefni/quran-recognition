@@ -11,7 +11,7 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh;
   font-family: sans-serif;
 
 }
@@ -143,4 +143,14 @@ body {
     -webkit-transform: scale(2);
     opacity: 0;
   }
+}
+
+.rtl 
+{
+  direction: rtl;
+}
+
+.quran 
+{
+  font-family: 'Amiri', serif !important;
 }

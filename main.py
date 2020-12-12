@@ -2,6 +2,7 @@ import os
 import datetime
 import shutil
 import glob
+import requests
 from os.path import join, dirname, realpath
 from flask import Flask, render_template, request,   jsonify
 from dejavu.logic.recognizer.file_recognizer import FileRecognizer
@@ -47,3 +48,24 @@ def generate():
             os.remove(song)
     fingerprinted_songs = djv.get_fingerprinted_songs()
     return render_template('fingerprints.html', fingerprints=fingerprinted_songs)
+
+
+@app.route('/readers')
+def readers():
+    resp = requests.get(
+        "http://api.alquran.cloud/v1/edition?format=audio&language=ar").json()
+    readers = resp['data']
+    return render_template('readers.html', readers=readers)
+
+
+@app.route('/reader/<id>')
+def show(id):
+    reader = requests.get(f"http://api.alquran.cloud/v1/quran/{id}").json()['data']
+    return render_template('reader.html', reader=reader)
+
+
+@app.route("/surah/<id>/<reader>")
+def showSurah(id, reader):
+    surah = requests.get(f"http://api.alquran.cloud/v1/surah/{id}/{reader}").json()['data']
+    return render_template('surah.html', surah=surah)
+
