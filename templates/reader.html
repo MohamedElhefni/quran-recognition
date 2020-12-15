@@ -1,14 +1,14 @@
 {% extends "main.html" %}
 {% block content %}
 	<div class="reader-name my-5 flex items-center justify-between"> 
-		<h1 class="text-6xl text-gray-800 font-extrabold mx-4"> {{ reader.edition.name }} </h1>
+		<h1 class="text-6xl text-gray-800 font-extrabold mx-4"> {{ reader.name }} </h1>
 		<a href="{{ url_for('readers') }}" class="px-4 py-2  mx-3 cursor-pointer text-white bg-blue-500 hover:bg-blue-400 rounded shadow font-bold"> رجوع </a>
 	</div>
 	<div class="readers grid gap-4 grid-cols-3 xl:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 rtl">
 		{% for surah in reader.surahs %}
-				<a class="reader text-center text-gray-800 font-black font-sans text-xl rounded-lg shadow-md bg-gray-100 m-3 hover:bg-gray-200 p-3" href="{{  url_for('showSurah', id=surah.number, reader=reader.edition.identifier) }}">
-					{{ surah.name }} - {{ surah.englishName }} <br>
-				  <div class="text-sm text-gray-700 my-1"> الآيات: {{ surah.ayahs|length }}</div>
+				<a class="reader text-center text-gray-800 font-black font-sans text-xl rounded-lg shadow-md {{ 'bg-green-100' if surah.isFingerprinted else 'bg-red-100' }} m-3 hover:bg-gray-200 p-3" href="{{  url_for('showSurah', id=surah.surah.number, reader=reader.slug) }}">
+					{{ surah.surah.name }} - {{ surah.surah.englishName }} <br>
+				  <div class="text-sm text-gray-700 my-1"> الآيات: {{ surah.surah.ayahs|length }}</div>
 				</a>
 		{% endfor %}		
 	</div>

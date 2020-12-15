@@ -4,15 +4,18 @@ import shutil
 import glob
 import requests
 from os.path import join, dirname, realpath
-from flask import Flask, render_template, request,   jsonify
+from flask import Flask, render_template, request, jsonify
 from dejavu.logic.recognizer.file_recognizer import FileRecognizer
 from utility import getSongName, init
-
+from flask_sqlalchemy import SQLAlchemy
 # from recognize import getSong
 app = Flask(__name__)
-app.config['MYSQL_DATABASE_CHARSET'] = 'utf8mb4'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://{user}:{password}@{server}/{database}'.format(
+    user='mohamed', password='mohamed**//', server='localhost', database='quran2')
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 djv = init('config.json')
-
+db = SQLAlchemy(app)
+from models import Reader, Surah, Ayah
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -52,20 +55,24 @@ def generate():
 
 @app.route('/readers')
 def readers():
-    resp = requests.get(
-        "http://api.alquran.cloud/v1/edition?format=audio&language=ar").json()
-    readers = resp['data']
+    # resp = requests.get(
+    #     "http://api.alquran.cloud/v1/edition?format=audio&language=ar").json()
+    readers = Reader.query.all()
     return render_template('readers.html', readers=readers)
 
 
 @app.route('/reader/<id>')
 def show(id):
-    reader = requests.get(f"http://api.alquran.cloud/v1/quran/{id}").json()['data']
+    reader = Reader.query.filter_by(slug=id).first()
     return render_template('reader.html', reader=reader)
 
 
 @app.route("/surah/<id>/<reader>")
 def showSurah(id, reader):
-    surah = requests.get(f"http://api.alquran.cloud/v1/surah/{id}/{reader}").json()['data']
-    return render_template('surah.html', surah=surah)
+    surah = Surah.query.filter_by(number=id).first()
+    reader = Reader.query.filter_by(slug=reader).first()
+    return render_template('surah.html', surah=surah, reader=reader)
 
+
+
+import seed

@@ -4,7 +4,7 @@
 
 	<div class="readers flex flex-wrap justify-center items-center">
 		{% for reader in readers %}
-				<a class="reader font-black font-sans text-gray-700  text-xl rounded-lg shadow-md bg-gray-100 m-3 hover:bg-gray-200 p-3" href="{{ url_for('show', id=reader.identifier) }}"> {{  reader.name }} </a>
+				<a class="reader font-black font-sans text-gray-700  text-xl rounded-lg shadow-md bg-gray-100 m-3 hover:bg-gray-200 p-3" href="{{ url_for('show', id=reader.slug) }}"> {{  reader.name }} </a>
 		{% endfor %}		
 	</div>
 {% endblock %}
