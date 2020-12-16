@@ -6,9 +6,9 @@
 	</div>
 	<div class="readers grid gap-4 grid-cols-3 xl:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 rtl">
 		{% for surah in reader.surahs %}
-				<a class="reader text-center text-gray-800 font-black font-sans text-xl rounded-lg shadow-md {{ 'bg-green-100' if surah.isFingerprinted else 'bg-red-100' }} m-3 hover:bg-gray-200 p-3" href="{{  url_for('showSurah', id=surah.surah.number, reader=reader.slug) }}">
-					{{ surah.surah.name }} - {{ surah.surah.englishName }} <br>
-				  <div class="text-sm text-gray-700 my-1"> الآيات: {{ surah.surah.ayahs|length }}</div>
+				<a class="reader text-center text-gray-800 font-black font-sans text-xl rounded-lg shadow-md  m-3 hover:bg-gray-200 p-3" href="{{  url_for('showSurah', id=surah.number, reader=reader.slug) }}">
+					{{ surah.name }} - {{ surah.englishName }} <br>
+				  <div class="text-sm text-gray-700 my-1"> الآيات: {{ surah.ayahs|length }}</div>
 				</a>
 		{% endfor %}		
 	</div>
